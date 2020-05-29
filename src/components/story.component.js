@@ -1,5 +1,5 @@
 /*eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { getStory } from "../services/news.service";
 import {
 	StoryWrapper,
@@ -9,7 +9,7 @@ import {
 } from "../styles/story.styles";
 import { mapTime } from "../mappers/time.mapper";
 
-export const StoryComponent = ({ storyId }) => {
+export const StoryComponent = memo(function Story({ storyId }) {
 	const [story, setStory] = useState({});
 
 	useEffect(() => {
@@ -32,4 +32,4 @@ export const StoryComponent = ({ storyId }) => {
 			</StoryMeta>
 		</StoryWrapper>
 	) : null;
-};
+});
